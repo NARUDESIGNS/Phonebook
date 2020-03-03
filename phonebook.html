@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="phonebook.css">
+    <link rel="stylesheet" href="css/all.css">
+    <title>Phonebook copy</title>
+</head>
+<body>
+
+    <div class="overall-container" id="overall-container">          
+        <div class="msg-alert-container" id="msg-alert-container">
+            <p id="msg-alert"> Added Successfully!</p>
+        </div>
+
+        <div class="contact-main-view">
+            <section class="contact-header">
+                <span><i class="fa fa-user"></i></span>
+                <h4 class="contact-heading">CONTACTS</h4>
+                <p class="naru-designs"> NARU.DESIGNS &copy 2020 </p>
+            </section>
+
+            <div class="main-view-container" id="main-view-container">
+                <section class="search-container">
+                    <span><i class="fa fa-search"></i></span>
+                    <input class="search-input" name="search" type="text" id="search" placeholder="search contact" maxlength="20">
+                </section>
+
+                <div class="house-main" id="house-main">
+                    <!-- the following are created using javascript -->
+                    <!-- starts -->
+                    <!-- <div class="contact-details" id="contact-details">
+                        <section class="name-initials" id="name-initials-container">
+                            <p  id="name-intials">AK</p>  
+                        </section>
+                        <section>
+                            <p class="contact-name" id="contact-name">Abbel Kane</p>
+                            <p class="contact-number" id="contact-number">09022182276</p>
+                        </section>
+                        <section class="edit-delete">
+                            <span class="edit-icon"  id="edit-icon"><i class="fa fa-edit"></i></span>
+                            <span class="trash-icon" id="delete-icon"><i class="fa fa-trash"></i></span>                    
+                        </section>
+                    </div> -->
+
+                    <!-- Not Found | No Contacts message -->
+                    <div class="no-result" id="no-result">
+                        <span><i class="fa fa-exclamation-circle"></i></span>
+                        <p class="no-result-msg" id="no-result-msg">NOT FOUND!</p>
+                    </div> 
+                    <!-- ends -->
+                </div>
+    
+                <!-- add button -->
+                <button class="new-contact" id="new-contact">
+                    <i class="fa fa-user-plus"></i>
+                </button>
+            </div>       
+        </div>
+        
+        <div class="dim-container" id="dim">
+        </div>
+
+        <div class="add-edit-delete-container" id="add-edit-delete">
+
+            <div class="add" id="add-view">
+                <h5 class="header">ADD CONTACT</h5>
+                <input name="name" type="text" class="input-name" id="input-name" placeholder="insert name" maxlength="20" required> <br>
+                <input name="number" type="number" class="input-number" id="input-number" placeholder="insert number" required> <br>
+                <button class="discard-add" id="discard-add">Discard</button>
+                <button class="ok-add" id="confirm-add">Add</button>
+            </div>
+
+            <div class="edit" id="edit-view">
+                <h5 class="header">EDIT CONTACT</h5>
+                <input name="name" type="text" class="input-name" id="edit-name" maxlength="20" required> <br>
+                <input name="number" type="number" class="input-number" id="edit-number" required> <br>
+                <button class="discard-edit" id="discard-edit">Discard</button>
+                <button class="ok-edit" id="confirm-edit">Done</button>            
+            </div>
+
+            <div class="delete" id="delete-view">
+                    <h5 class="header">DELETE CONTACT</h5>
+                    <p class="delete-msg">Are you sure you want to delete this contact?</p>
+                    <button class="discard-delete" id="discard-delete">Cancel</button>
+                    <button class="ok-delete" id="confirm-delete">Delete</button>             
+            </div>
+        </div>
+    </div>
+    
+<script src="phonebook.js"></script>
+</body>
+</html>

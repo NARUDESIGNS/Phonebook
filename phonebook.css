@@ -1,0 +1,511 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color : #ffffff;       
+    --body-color : #f3f3f3;
+    --secondary-color: #5d5b5b;
+}
+
+body {
+    background-color: var(--body-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: ease-in 1s;
+}
+
+.overall-container {
+   /* border: 1px solid black;  */
+   min-height: 100vh;
+   height: 100%;
+   /* position: relative; */
+}
+
+/* MOBILE VIEW */
+/* message alert */
+.msg-alert-container {
+    background-color: rgb(215, 255, 215);
+    padding: 10px;
+    text-align: center;
+    color: var(--secondary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation-name: fade-away;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    word-wrap: break-word;
+    display: none;
+    z-index: 30;
+    /* position: fixed;
+    width: 100%; */
+}
+
+@keyframes fade-away {
+    0% {opacity: 0}
+    90% {opacity: 0.8} 
+    100% {color: green;
+        opacity: 0;
+        display: none;
+    } 
+}
+
+/* contact header | icon */
+.contact-header {
+    background-color: var(--primary-color);
+    padding: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.naru-designs {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    color: var(--secondary-color);
+    margin-top: 20px;
+}
+
+.fa-user {
+    color: var(--secondary-color);
+    padding: 10px 0;
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.contact-heading {
+    color: var(--secondary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-view-container {
+    background-color: var(--primary-color);
+    min-height: 100vh;
+    height: 100%; 
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    /* border: 1px solid red;  */
+}
+.house-main {
+    overflow-y: hidden; 
+}
+
+.no-result {
+    margin: 20% auto;
+    text-align: center;    
+    color: grey;
+    display: none;
+}
+
+.no-result-msg {
+    margin-top: 20px;
+}
+
+.fa-exclamation-circle {
+    font-size: 50px;
+}
+
+/* search input */
+.search-container {
+    display: flex;
+    position: relative;
+    border-bottom: 1.5px solid var(--body-color);
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: var(--primary-color);
+}
+
+.search-input {
+    padding: 13px 20% 13px 20px;
+    width: 100%;
+    margin: 0 auto;
+    outline: none;
+    border: none;
+    background-color: var(--body-color);
+    border-radius: 20px;
+    color: var(--secondary-color);
+    font-size: 15px;
+}
+
+.fa-search {
+    color: var(--secondary-color);
+    position: absolute;
+    bottom: 40%;
+    right: 15%;
+}
+
+/* contact details */
+.contact-details {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-bottom: 1.5px solid var(--body-color);
+    position: relative; 
+}
+
+.name-initials {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background-color: rgb(151, 189, 255);
+    border-radius: 50%;
+    margin-right: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-name {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--secondary-color);
+    margin-bottom: 5px;
+}
+
+.contact-number {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--secondary-color);
+    font-size: 13px;
+}
+
+.edit-delete {
+    margin-left: 70px;
+    width: auto;
+    animation-name: fade-out; 
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    transition: ease-in 1s;
+    position: absolute;
+    right: 0px;
+    width: 100px;
+}
+
+.fa-edit {
+    color: rgb(102, 150, 232);
+    outline: none;
+}
+
+.fa-trash {
+    color: rgb(232, 102, 137);
+    outline: none;
+    margin-right: 3px;
+}
+
+.edit-icon, .trash-icon {
+    background-color: var(--primary-color);
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+} 
+
+.contact-details:hover .edit-delete  {
+    transition: ease-in-out 1s;
+    animation: fade-in 0.3s; 
+}
+
+@keyframes fade-in {
+    0% {transform: scale(0)}
+    100% {transform: scale(1)}
+}
+
+@keyframes fade-out {
+    from {transform: scale(1);
+    }
+    to {transform: scale(0);
+        visibility: hidden;
+    }
+}
+
+.edit-icon:hover, .trash-icon:hover {
+    background-color: var(--body-color);
+    transition: ease 0.7s;
+}
+
+.contact-not-found {
+    text-align: center;
+    color: var(--secondary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    margin: 30px 0;
+    display: none;
+}
+
+.new-contact {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 5px 10px rgb(201, 200, 200);
+    color: white;
+    font-size: 15px;
+    padding: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.new-contact:active {
+    transform: scale(0.9);
+}
+
+/* dim background */
+.dim-container {
+    /* width: 100%;
+    min-height: 100vh;
+    height: 100%; */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.7;
+    visibility: hidden;
+}
+
+/* add | edit | delete container */
+.add-edit-delete-container { /* this contaner is invisible, it helps for alignment */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+.add, .edit, .delete {
+    background-color: var(--primary-color);
+    border-radius: 20px;
+    padding: 15px 30px 15px 30px;
+    text-align: center;
+    max-width: 240px;
+    z-index: 5;
+    animation-name: fade-in; 
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
+.header {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--secondary-color);
+    margin-bottom: 7px;
+}
+
+.input-name, .input-number {
+    padding: 10px;
+    margin: 5px auto;
+    width: 200px;
+    border: none;
+    border-radius: 20px;
+    background-color: var(--body-color);
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 13px;
+    color: var(--secondary-color);
+}
+
+.ok-add, .discard-add, .ok-edit, .discard-edit, .ok-delete, .discard-delete {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    margin-top: 10px;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.ok-add, .ok-edit, .ok-delete {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.discard-add, .discard-edit, .discard-delete {
+    background-color: rgb(240, 93, 132);
+    color: white;
+    margin-right: 20px;
+}
+
+.delete-msg {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--secondary-color);
+    word-wrap: word-break;
+    margin: 15px 0;
+}
+
+.add {
+    /* visibility: visible; */
+    display: none;
+}
+
+.edit {
+    /* visibility: hidden; */
+    display: none;
+}
+
+.delete {
+    /* visibility: hidden; */
+    display: none;
+}
+
+.input-name, .input-number {
+    padding: 13px;
+    font-size: 17px;
+    color: var(--secondary-color);
+}
+
+
+/*-------------------------------------------------------------------*/
+
+
+
+/* WEB VIEW */
+@media only screen and (min-width: 800px){
+    
+    body {
+        overflow: hidden;
+    }
+
+    /* message alert */
+    .msg-alert-container {
+        background-color: rgb(215, 255, 215);
+        padding: 50px;
+        text-align: center;
+        color: var(--secondary-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        animation-name: fade-away;
+        animation-duration: 2s;
+        animation-fill-mode: forwards;
+        word-wrap: break-word;
+        /* display: none; */
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        right: 0;
+        border-top-left-radius: 29px;
+        border-top-right-radius: 20px;
+    }
+
+    .overall-container {
+        transform: scale(0.8);
+        margin: 0 auto;
+        border-radius: 30px;
+        box-shadow: 0px 5px 10px rgb(204, 204, 204);
+        box-shadow: 10px 37px 20px -30px rgb(6, 6, 6, 0.2);
+        /* max-width: 90%; */
+    }
+
+    .contact-main-view {
+        display: flex;
+        /* border: 1px solid green; */
+        border-radius: 30px;
+        padding: 0;
+    }
+    .contact-header {
+        background-color: var(--secondary-color);
+        /* padding: 30px; */
+        width: 30%;
+        margin: 0;
+        /* margin: 15px 0 30px 10px; */
+        border-radius: 30px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .naru-designs {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 13px;
+        color: white;
+        position: fixed;
+        bottom: 20px;
+    }
+    .fa-user {
+        color: var(--primary-color);
+        padding: 20px 0;
+        font-size: 20px;
+    }
+    .contact-heading {
+        color: var(--primary-color);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .search-container {
+        border-bottom: 0.5px solid rgb(241, 241, 241);
+        border-bottom: 1px solid rgb(235, 232, 232);
+        border-top-left-radius: 0;
+        padding: 20px;
+        min-height: 50px;
+    } 
+
+    .search-input {
+        width: 50%;
+        padding: 15px;
+        padding-right: 55px;
+        margin-left: 40%;
+        font-size: 17px;
+    }
+
+    .fa-search {
+        right: 7%;
+    }
+
+    .main-view-container {
+        width: 70%;
+        height: 0;
+        /* margin: 15px 10px 30px 0; */
+        border-radius: 30px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        /* overflow-y: scroll; */
+    }
+
+    .house-main {
+        overflow-y: scroll;
+    }
+
+    /* .contact-name {
+        font-size: 1.1rem;
+    }
+    .contact-number {
+        font-size: 15px;
+    } */
+
+    .new-contact {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+    }
+    ::-webkit-scrollbar {
+        border: none;
+    }
+    .dim-container {
+        border-radius: 30px;
+    }
+    .add, .edit, .delete {
+        font-size: 18px;
+    }
+}
+
+/*  MUCH WIDER WEB VIEW  */
+@media only screen and (min-width: 1200px){
+    .overall-container{
+        max-width: 90%;
+    }
+}

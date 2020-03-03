@@ -1,0 +1,81 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --main-color: rgb(133, 131, 131);
+}
+
+.input {
+    display: block;
+    outline: none;
+    margin: 70px auto;
+    height: 35px;
+    width: 80%;
+    border: 2px solid grey;
+    color: var(--main-color);
+    font-size: 16px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    padding: 0 20px;
+}
+
+.container {
+    position: relative;    
+    padding: 40px;
+    background-color: rgb(100, 99, 99);
+    border-radius: 20px;
+    transition: ease-in 1s;
+    margin: 5px 10px;
+}
+
+.container:hover i {
+    visibility: visible;
+    transition: ease-in-out 1s;
+    animation: fade 0.1s; 
+}
+
+@keyframes fade {
+    0% {transform: scale(0.2)}
+    100% {transform: scale(1)}
+}
+
+@keyframes fadeOut {
+    from {transform: scale(1);
+    }
+    to {transform: scale(0.3);
+        visibility: hidden;
+    }
+}
+
+i {
+    position: absolute;
+    top: -23px;
+    font-size: 50px;
+    color: rgb(240, 239, 239);
+    animation-name: fadeOut; 
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    transition: ease-in 1s;
+}
+
+.innerChild {
+    color: white;
+}
+
+p {
+    color: white;
+    word-wrap: break-word;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+footer {    
+    position: absolute; 
+    bottom: 0px;
+    height: 20vh;
+    width: 100vw;
+
+    background-color: rgb(44, 143, 64);
+}
