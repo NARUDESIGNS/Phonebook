@@ -13,6 +13,10 @@ body {
     background-color: var(--body-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: ease-in 1s;
+    -webkit-transition: ease-in 1s;
+    -moz-transition: ease-in 1s;
+    -ms-transition: ease-in 1s;
+    -o-transition: ease-in 1s;
 }
 
 .overall-container {
@@ -172,13 +176,17 @@ body {
 .edit-delete {
     margin-left: 70px;
     width: auto;
-    animation-name: fade-out; 
+    animation-name: fade-out;
     animation-duration: 0.3s;
     animation-fill-mode: forwards;
     transition: ease-in 1s;
     position: absolute;
     right: 0px;
     width: 100px;
+    -webkit-transition: ease-in 1s;
+    -moz-transition: ease-in 1s;
+    -ms-transition: ease-in 1s;
+    -o-transition: ease-in 1s;
 }
 
 .fa-edit {
@@ -204,25 +212,52 @@ body {
 
 .contact-details:hover .edit-delete  {
     transition: ease-in-out 1s;
-    animation: fade-in 0.3s; 
+    animation: fade-in 0.3s;
+    -webkit-animation: fade-in 0.3s;
+    -webkit-transition: ease-in-out 1s;
+    -moz-transition: ease-in-out 1s;
+    -ms-transition: ease-in-out 1s;
+    -o-transition: ease-in-out 1s;
 }
 
 @keyframes fade-in {
-    0% {transform: scale(0)}
-    100% {transform: scale(1)}
+    0% { transform: scale(0); 
+        -webkit-transform: scale(0); 
+        -moz-transform: scale(0); 
+        -ms-transform: scale(0); 
+        -o-transform: scale(0); 
+    }
+    100% { transform: scale(1); 
+        -webkit-transform: scale(1); 
+        -moz-transform: scale(1); 
+        -ms-transform: scale(1); 
+        -o-transform: scale(1); 
+    }
 }
 
 @keyframes fade-out {
-    from {transform: scale(1);
+    from { transform: scale(1); 
+        -webkit-transform: scale(1); 
+        -moz-transform: scale(1); 
+        -ms-transform: scale(1); 
+        -o-transform: scale(1);
     }
-    to {transform: scale(0);
-        visibility: hidden;
+    to { transform: scale(0); 
+        visibility: hidden; 
+        -webkit-transform: scale(0); 
+        -moz-transform: scale(0); 
+        -ms-transform: scale(0); 
+        -o-transform: scale(0);
     }
 }
 
 .edit-icon:hover, .trash-icon:hover {
     background-color: var(--body-color);
     transition: ease 0.7s;
+    -webkit-transition: ease 0.7s;
+    -moz-transition: ease 0.7s;
+    -ms-transition: ease 0.7s;
+    -o-transition: ease 0.7s;
 }
 
 .contact-not-found {
@@ -251,6 +286,10 @@ body {
 
 .new-contact:active {
     transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+    -moz-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+    -o-transform: scale(0.9);
 }
 
 /* dim background */
@@ -403,7 +442,12 @@ body {
         border-radius: 30px;
         box-shadow: 0px 5px 10px rgb(204, 204, 204);
         box-shadow: 10px 37px 20px -30px rgb(6, 6, 6, 0.2);
-        /* max-width: 90%; */
+        /*max-width: 90%;
+         */
+        -webkit-transform: scale(0.8);
+        -moz-transform: scale(0.8);
+        -ms-transform: scale(0.8);
+        -o-transform: scale(0.8);
     }
 
     .contact-main-view {
