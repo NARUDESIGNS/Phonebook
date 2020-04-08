@@ -208,6 +208,7 @@ body {
     border-radius: 50%;
     text-align: center;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 } 
 
 .contact-details:hover .edit-delete  {

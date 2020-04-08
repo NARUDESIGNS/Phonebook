@@ -1,4 +1,6 @@
 
+// contactBase = [["Dolapo", "09098873376"], ["Simbi", "09099776788"]];
+
 //COLLECT NECESSARY DOM ELEMENTS TO BE USED FOR APPLICATION FUNCTIONALITY
 let msgAlert = document.getElementById('msg-alert');
 let noResult = document.getElementById('no-result');
@@ -36,6 +38,15 @@ let discardEdit = document.getElementById('discard-edit');
 
 let confirmDelete = document.getElementById('confirm-delete');
 let discardDelete = document.getElementById('discard-delete');
+
+//restore contacts saved before application was quit ...in progress
+if(localStorage.getItem('contacts')){
+    contactBaseUpdate = JSON.parse(localStorage.getItem('contacts'));
+    contactBase = [];
+    for(let contact of contactBaseUpdate){
+        renderContacts(contact[0], contact[1]);
+    }
+}
 
 // display "NO CONTACTS" when theres no contact
 function displayNoResult(){
@@ -187,7 +198,7 @@ function editContact(editButton){
 }
 
 //user confirms add
-let contactBase = [];
+contactBase = [];
 confirmAdd.addEventListener('click', () => {
     hideContainer(addView);
     renderContacts(addNameInput.value, addNumberInput.value);
@@ -275,3 +286,6 @@ searchInput.addEventListener('input', () => {
         }
     }
 });
+
+//Store contact in local storage
+updateContact = () => localStorage.setItem('contacts', JSON.stringify(contactBase));
