@@ -1,6 +1,4 @@
 
-// contactBase = [["Dolapo", "09098873376"], ["Simbi", "09099776788"]];
-
 //COLLECT NECESSARY DOM ELEMENTS TO BE USED FOR APPLICATION FUNCTIONALITY
 let msgAlert = document.getElementById('msg-alert');
 let noResult = document.getElementById('no-result');
@@ -39,14 +37,21 @@ let discardEdit = document.getElementById('discard-edit');
 let confirmDelete = document.getElementById('confirm-delete');
 let discardDelete = document.getElementById('discard-delete');
 
-//restore contacts saved before application was quit ...in progress
+// //restore contacts saved before application was quit ...in progress
+contactBase = [];
+
 if(localStorage.getItem('contacts')){
     contactBaseUpdate = JSON.parse(localStorage.getItem('contacts'));
-    contactBase = [];
     for(let contact of contactBaseUpdate){
         renderContacts(contact[0], contact[1]);
+        // contactBase.push(contact);
+        // contactBase.sort();
+        console.log(contact);
     }
 }
+
+//Store contact in local storage
+updateContacts = () => localStorage.setItem('contacts', JSON.stringify(contactBase));
 
 // display "NO CONTACTS" when theres no contact
 function displayNoResult(){
@@ -140,69 +145,7 @@ function renderContacts(name, number){
     //reset add view input values
     addNameInput.value = "";
     addNumberInput.value = "";
-}
 
-//delete contact function
-function deleteContact(deleteButton){
-        deleteButton.parentElement.parentElement.style.animation = "fade-out 0.6s";
-        setTimeout(() => {
-            contactsContainer.removeChild(deleteButton.parentElement.parentElement); 
-            //search through the contact base to see which contact matches the one whose delete button is clicked and remove it from the array
-            contactBase.forEach(value => {
-                let nameToMatch = deleteButton.parentElement.previousElementSibling.firstElementChild.innerText; //store name of contact whose delete button is clicked
-                let numberToMatch = deleteButton.parentElement.previousElementSibling.lastElementChild.innerText; //store number of contact whose delete button is clicked
-                if(value.toString() == `${nameToMatch},${numberToMatch}`){
-                    contactBase.splice(contactBase.indexOf(value), 1);
-                }
-            });
-        }, 600);    
-        msgAlert.innerText = "Deleted successfully!"; 
-        msgAlert.parentElement.style.display = "block"; 
-        setTimeout(() => {
-            // display "NO CONTACTS" when theres no contact
-            if(contactsContainer.childElementCount == 1){ //1 because the noResult element is still a present child even tho hidden
-                displayNoResult();
-                //displayContainer(editView);
-                console.log('no elements nw');
-            }
-            msgAlert.parentElement.style.display = "none";
-            //reset the page and search input just incase the user searched a number to delete it
-            for(let i = 0; i < contactName.length; i++){
-                contactName[i].parentElement.parentElement.style.display = "flex";
-            }
-            searchInput.value = "";
-        }, 2000); 
-}
-
-// edit contact function 
-function editContact(editButton){
-    //name to use in matching previous name | number values in contact base
-    let nameBeforeEdit = editButton.parentElement.previousElementSibling.firstElementChild.innerText;
-    let numberBeforeEdit = editButton.parentElement.previousElementSibling.lastElementChild.innerText;
-    //store edited input value into the name and number field
-    editButton.parentElement.previousElementSibling.firstElementChild.innerText = editNameInput.value;
-    editButton.parentElement.previousElementSibling.lastElementChild.innerText = editNumberInput.value;
-    //replace old value with new edited value
-    contactBase.forEach(value => {
-        if(value.toString() == `${nameBeforeEdit},${numberBeforeEdit}`){ 
-            //console.log("found match!", nameBeforeEdit, numberBeforeEdit, contactBase.indexOf(value), "");
-            //contactBase.splice(contactBase.indexOf(value), 1);
-            contactBase[contactBase.indexOf(value)] = [`${editNameInput.value}`,`${editNumberInput.value}`];
-            //renderContacts(editNameInput.value, editNumberInput.value);
-        }
-    });
-    //regenerate name initials else nameinitials will be left with Letter from the original word before it is being edited
-    let elementShortened = editButton.parentElement.previousElementSibling.previousElementSibling;
-    let nameShortened = editButton.parentElement.previousElementSibling.firstElementChild.innerText;
-    getNameInitials(elementShortened, nameShortened);   
-}
-
-//user confirms add
-contactBase = [];
-confirmAdd.addEventListener('click', () => {
-    hideContainer(addView);
-    renderContacts(addNameInput.value, addNumberInput.value);
-    
     //DELETE CONTACT
     for (let button of deleteButtons){
         button.addEventListener('click', function(){
@@ -248,6 +191,68 @@ confirmAdd.addEventListener('click', () => {
         hideContainer(editView);
         editContact(editButton);
     }); 
+}
+
+//delete contact function
+function deleteContact(deleteButton){
+        deleteButton.parentElement.parentElement.style.animation = "fade-out 0.6s";
+        setTimeout(() => {
+            contactsContainer.removeChild(deleteButton.parentElement.parentElement); 
+            //search through the contact base to see which contact matches the one whose delete button is clicked and remove it from the array
+            contactBase.forEach(value => {
+                let nameToMatch = deleteButton.parentElement.previousElementSibling.firstElementChild.innerText; //store name of contact whose delete button is clicked
+                let numberToMatch = deleteButton.parentElement.previousElementSibling.lastElementChild.innerText; //store number of contact whose delete button is clicked
+                if(value.toString() == `${nameToMatch},${numberToMatch}`){
+                    contactBase.splice(contactBase.indexOf(value), 1);
+                }
+            });
+        }, 600);    
+        msgAlert.innerText = "Deleted successfully!"; 
+        msgAlert.parentElement.style.display = "block"; 
+        setTimeout(() => {
+            // display "NO CONTACTS" when theres no contact
+            if(contactsContainer.childElementCount == 1){ //1 because the noResult element is still a present child even tho hidden
+                displayNoResult();
+                //displayContainer(editView);
+                console.log('no elements nw');
+            }
+            msgAlert.parentElement.style.display = "none";
+            //reset the page and search input just incase the user searched a number to delete it
+            // for(let i = 0; i < contactName.length; i++){
+            //     contactName[i].parentElement.parentElement.style.display = "flex";
+            // }
+            searchInput.value = "";
+        }, 2000);
+}
+
+// edit contact function 
+function editContact(editButton){
+    //name to use in matching previous name | number values in contact base
+    let nameBeforeEdit = editButton.parentElement.previousElementSibling.firstElementChild.innerText;
+    let numberBeforeEdit = editButton.parentElement.previousElementSibling.lastElementChild.innerText;
+    //store edited input value into the name and number field
+    editButton.parentElement.previousElementSibling.firstElementChild.innerText = editNameInput.value;
+    editButton.parentElement.previousElementSibling.lastElementChild.innerText = editNumberInput.value;
+    //replace old value with new edited value
+    contactBase.forEach(value => {
+        if(value.toString() == `${nameBeforeEdit},${numberBeforeEdit}`){ 
+            //console.log("found match!", nameBeforeEdit, numberBeforeEdit, contactBase.indexOf(value), "");
+            //contactBase.splice(contactBase.indexOf(value), 1);
+            contactBase[contactBase.indexOf(value)] = [`${editNameInput.value}`,`${editNumberInput.value}`];
+            //renderContacts(editNameInput.value, editNumberInput.value);
+        }
+    });
+    //regenerate name initials else nameinitials will be left with Letter from the original word before it is being edited
+    let elementShortened = editButton.parentElement.previousElementSibling.previousElementSibling;
+    let nameShortened = editButton.parentElement.previousElementSibling.firstElementChild.innerText;
+    getNameInitials(elementShortened, nameShortened);   
+}
+
+//user confirms add
+//contactBase = [];
+confirmAdd.addEventListener('click', () => {
+    hideContainer(addView);
+    renderContacts(addNameInput.value, addNumberInput.value);
 });
 
   
@@ -287,5 +292,7 @@ searchInput.addEventListener('input', () => {
     }
 });
 
-//Store contact in local storage
-updateContact = () => localStorage.setItem('contacts', JSON.stringify(contactBase));
+//Update the local storage every second
+setInterval( () => {
+    updateContacts();
+}, 1000);
