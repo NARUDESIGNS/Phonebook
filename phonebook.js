@@ -44,9 +44,6 @@ if(localStorage.getItem('contacts')){
     contactBaseUpdate = JSON.parse(localStorage.getItem('contacts'));
     for(let contact of contactBaseUpdate){
         renderContacts(contact[0], contact[1]);
-        // contactBase.push(contact);
-        // contactBase.sort();
-        console.log(contact);
     }
 }
 
@@ -55,9 +52,9 @@ updateContacts = () => localStorage.setItem('contacts', JSON.stringify(contactBa
 
 // display "NO CONTACTS" when theres no contact
 function displayNoResult(){
-    noResult.style.display = "block";
     noResultMsg.innerText = "NO CONTACTS!"
-    noResult.style.fontSize = "20px";        
+    noResult.style.fontSize = "20px";     
+    noResult.style.display = "block";   
 }
 
 // hide "NO CONTACTS" when theres are contacts
@@ -190,6 +187,7 @@ function renderContacts(name, number){
     confirmEdit.addEventListener('click', () => { 
         hideContainer(editView);
         editContact(editButton);
+        updateContacts();
     }); 
 }
 
@@ -264,13 +262,13 @@ searchInput.addEventListener('input', () => {
         searchInput.value = searchInput.value.replace(/\s/g,'');
     } 
     //check if name includes values been typed into the search bar
-    let notFoundCount = 0; //this is used to count how many matches that wasn't found
+    let noMatchCount = 0; //this is used to count how many matches that wasn't found
     for(let j = 0; j < contactName.length; j++){
         if(!contactName[j].innerText.toUpperCase().includes(searchInput.value.toUpperCase())){
-            notFoundCount++;
+            noMatchCount++;
         }
         else {
-            notFoundCount--;
+            noMatchCount--;
         }
     }
     for(let i = 0; i < contactName.length; i++){
@@ -282,7 +280,7 @@ searchInput.addEventListener('input', () => {
         }
         //if total of names not matched equals the total number of names, it means theres no match at all
         //therefore we display the no-result message else we hide the no-result message
-        if(notFoundCount === contactName.length){
+        if(noMatchCount === contactName.length){
             noResultMsg.innerText = "NOT FOUND!"
             noResult.style.display = "block";
         }

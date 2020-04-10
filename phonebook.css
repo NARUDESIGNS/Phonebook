@@ -98,6 +98,7 @@ body {
     margin: 20% auto;
     text-align: center;    
     color: grey;
+    z-index: 7;
     display: none;
 }
 
