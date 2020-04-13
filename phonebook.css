@@ -20,10 +20,8 @@ body {
 }
 
 .overall-container {
-   /* border: 1px solid black;  */
    min-height: 100vh;
    height: 100%;
-   /* position: relative; */
 }
 
 /* MOBILE VIEW */
@@ -40,8 +38,6 @@ body {
     word-wrap: break-word;
     display: none;
     z-index: 30;
-    /* position: fixed;
-    width: 100%; */
 }
 
 @keyframes fade-away {
@@ -88,7 +84,6 @@ body {
     height: 100%; 
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    /* border: 1px solid red;  */
 }
 .house-main {
     overflow-y: hidden; 
@@ -296,9 +291,6 @@ body {
 
 /* dim background */
 .dim-container {
-    /* width: 100%;
-    min-height: 100vh;
-    height: 100%; */
     position: fixed;
     top: 0;
     right: 0;
@@ -385,17 +377,14 @@ body {
 }
 
 .add {
-    /* visibility: visible; */
     display: none;
 }
 
 .edit {
-    /* visibility: hidden; */
     display: none;
 }
 
 .delete {
-    /* visibility: hidden; */
     display: none;
 }
 
@@ -428,7 +417,6 @@ body {
         animation-duration: 2s;
         animation-fill-mode: forwards;
         word-wrap: break-word;
-        /* display: none; */
         position: absolute;
         z-index: 10;
         top: 0;
@@ -444,8 +432,6 @@ body {
         border-radius: 30px;
         box-shadow: 0px 5px 10px rgb(204, 204, 204);
         box-shadow: 10px 37px 20px -30px rgb(6, 6, 6, 0.2);
-        /*max-width: 90%;
-         */
         -webkit-transform: scale(0.8);
         -moz-transform: scale(0.8);
         -ms-transform: scale(0.8);
@@ -454,16 +440,13 @@ body {
 
     .contact-main-view {
         display: flex;
-        /* border: 1px solid green; */
         border-radius: 30px;
         padding: 0;
     }
     .contact-header {
         background-color: var(--secondary-color);
-        /* padding: 30px; */
         width: 30%;
         margin: 0;
-        /* margin: 15px 0 30px 10px; */
         border-radius: 30px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -512,27 +495,18 @@ body {
     .main-view-container {
         width: 70%;
         height: 0;
-        /* margin: 15px 10px 30px 0; */
         border-radius: 30px;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         position: relative;
         display: flex;
         flex-direction: column;
-        /* overflow-y: scroll; */
     }
 
     .house-main {
         overflow-y: scroll;
     }
-
-    /* .contact-name {
-        font-size: 1.1rem;
-    }
-    .contact-number {
-        font-size: 15px;
-    } */
-
+    
     .new-contact {
         position: fixed;
         bottom: 50px;
