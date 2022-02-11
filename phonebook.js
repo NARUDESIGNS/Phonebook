@@ -253,6 +253,10 @@ confirmAdd.addEventListener('click', () => {
     renderContacts(addNameInput.value, addNumberInput.value);
 });
 
+document.addEventListener('keypress', (e) => {
+    if (addView.style.display === 'block' && e.key === 'Enter') confirmAdd.click();
+}); 
+
   
 
 //SEARCH CONTACT    
